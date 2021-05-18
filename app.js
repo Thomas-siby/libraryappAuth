@@ -21,14 +21,15 @@ const store = new MongoDBSession({
     uri: mongoURI,
     collection: 'mySessions',
 });
-const isAuth= (req,res,next)=>{
-    if(req.session.isAuth){
-        next()
-    }
-    else{
-        res.redirect('/login');
-    }
-}
+// const isAuth= (req,res,next)=>{
+//     if(req.session!=undefined){
+//         next()
+
+//     }
+//     else{
+//         res.redirect('/login');
+//     }
+// }
 
 const nav = [ 
     {link : '/books' , name : 'Books'},
@@ -127,7 +128,7 @@ app.post("/login",async(req,res)=>{
         return res.redirect('/login')
     }
 
-   req.session.isAuth =true;
+//    req.session.isAuth =true;
    res.redirect('/books');
     
    

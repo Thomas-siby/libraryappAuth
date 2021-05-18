@@ -3,14 +3,14 @@ const booksRouter = express.Router();
 const Bookdata = require('../model/Bookdata');
 
 booksRouter.use(express.static('./public'));
-const isAuth= (req,res,next)=>{
-    if(req.session.isAuth){
-        next()
-    }
-    else{
-        res.redirect('/login');
-    }
-}
+// const isAuth= (req,res,next)=>{
+//     if(req.session!=undefined){
+//         next()
+//     }
+//     else{
+//         res.redirect('/login');
+//     }
+// }
 
 function book_fn(nav){
     // var books = [
@@ -52,7 +52,7 @@ function book_fn(nav){
     // ] 
 
      
-    booksRouter.get('/',isAuth ,(req,res)=>{
+    booksRouter.get('/' ,(req,res)=>{
         Bookdata.find()
         .then(function(books){
             res.render("books" , {
